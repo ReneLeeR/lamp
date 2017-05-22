@@ -12,6 +12,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-ye
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install mysql-server 
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install nodejs 
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install npm
+RUN rm -rf /var/www/html
+RUN mkdir /var/www/html
 RUN npm install -g mysql
 RUN npm install -g express
 RUN mkdir /var/www/cgi
@@ -27,3 +29,4 @@ RUN chmod 755 -R /var/www/html/*
 RUN chmod 755 -R /var/www/html/
 COPY sshd_config /etc/ssh/
 COPY default /etc/nginx/sites-available/
+COPY index.php /var/www/html
