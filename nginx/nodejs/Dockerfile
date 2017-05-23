@@ -23,7 +23,6 @@ RUN addgroup web
 RUN useradd -d /var/www/html -g web web
 RUN echo 'web:password'|chpasswd
 RUN chown web:web -R /var/www/html/
-RUN chmod 755 -R /var/www/html/*
 RUN chmod 755 -R /var/www/html/
 COPY sshd_config /etc/ssh/
 COPY default /etc/nginx/sites-available/
