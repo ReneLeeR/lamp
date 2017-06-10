@@ -60,6 +60,7 @@ RUN a2enmod headers
 RUN a2enmod proxy_balancer
 RUN a2enmod proxy_connect
 RUN a2enmod proxy_html
+RUN rm -rf /var/www/html/*
 RUN mkdir /etc/apache2/ssl
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt -subj "/C=MX/ST=Aguascalientes/L=Aguascalientes/O=Instituto Tecnologico De Aguascalientes/OU=Centro De Computo/CN=ssl.ita.mx"
 RUN a2ensite default-ssl.conf
@@ -67,9 +68,7 @@ RUN echo 'root:Uuddlrlrbas-190598'|chpasswd
 RUN addgroup web
 RUN useradd -d /var/www/html -g web web
 RUN echo 'web:password'|chpasswd
-RUN chown web:web -R /var/www/html/*
 RUN chown web:web -R /var/www/html/
-RUN chmod 755 -R /var/www/html/*
 RUN chmod 755 -R /var/www/html/
 COPY sshd_config /etc/ssh/
 COPY default-ssl.conf /etc/apache2/sites-available/
@@ -79,3 +78,4 @@ COPY php.ini /etc/php/7.0/cgi/
 COPY php.ini /etc/php/7.0/embed/          
 COPY php.ini /etc/php/7.0/fpm/            
 COPY php.ini /etc/php/7.0/phpdbg/
+COPY index.php /var/www/html
