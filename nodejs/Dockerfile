@@ -19,5 +19,6 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN npm install npm --global
 RUN npm install mysql --global
 RUN npm install express --global
+RUN npm install forever --global
 COPY sshd_config /etc/ssh/
 COPY itworks.js /var/www/cgi/nodejs
