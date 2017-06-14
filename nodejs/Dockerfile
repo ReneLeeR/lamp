@@ -15,3 +15,4 @@ RUN mkdir -p /var/www/cgi/nodejs
 RUN npm install -g mysql
 RUN npm install -g express
 COPY sshd_config /etc/ssh/
+COPY itworks.js /var/www/cgi/nodejs
