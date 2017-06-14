@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-ye
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install mysql-server
 RUN mkdir -p /var/www/cgi/nodejs
 RUN echo 'root:Uuddlrlrbas-190598'|chpasswd
+RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN npm install npm --global
 RUN npm install mysql --global
 RUN npm install express --global
