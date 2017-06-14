@@ -8,8 +8,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-ye
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install build-essential
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install libxml2-dev
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install curl
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install nodejs 
-RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install npm
+RUN curl -L https://npmjs.org/install.sh | sudo sh
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install mysql-server
 RUN mkdir -p /var/www/cgi/nodejs
 RUN echo 'root:Uuddlrlrbas-190598'|chpasswd
