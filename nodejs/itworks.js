@@ -6,43 +6,44 @@ var options = {
   cert: fs.readFileSync('/var/www/cgi/nodejs/ssl/node.crt')
 };
 http.createServer(function(request, response) {  
-  if(request.url == "/")
+  fs.readFile((request.url.charAt(request.url.length-1) == "/") ? "/var/www/html"+request.url+"index.html" : "/var/www/html" + request.url, function (error, pgResp) 
   {
-    fs.readFile("/var/www/html/index.html", function (error, pgResp) 
+    console.log(request.url);
+    if(error)
     {
-      response.writeHead(200, { 'Content-Type': 'text/html' });
+      fs.readFile("/var/www/html/404/index.html",function(error, notfound)
+      {
+        response.writeHead(200);
+        response.write(notfound);
+        response.end();
+      });
+    }
+    else
+    {
+      response.writeHead(200);
       response.write(pgResp);
       response.end();
-    });
-  } 
-  else
-  {
-    fs.readFile("/var/www/html/404/index.html", function (error, pgResp) 
-    {
-      response.writeHead(200, { 'Content-Type': 'text/html' });
-      response.write(pgResp);
-      response.end();
-    });
-  }
+    }
+  });
 }).listen(80);
 https.createServer(options, function(request, response) {
-  if(request.url == "/")
+  fs.readFile((request.url.charAt(request.url.length-1) == "/") ? "/var/www/html"+request.url+"index.html" : "/var/www/html" + request.url, function (error, pgResp) 
   {
-    fs.readFile("/var/www/html/index.html", function (error, pgResp) 
+    console.log(request.url);
+    if(error)
     {
-      response.writeHead(200, { 'Content-Type': 'text/html' });
+      fs.readFile("/var/www/html/404/index.html",function(error, notfound)
+      {
+        response.writeHead(200);
+        response.write(notfound);
+        response.end();
+      });
+    }
+    else
+    {
+      response.writeHead(200);
       response.write(pgResp);
       response.end();
-    });
-  } 
-  else
-  {
-    fs.readFile("/var/www/html/404/index.html", function (error, pgResp) 
-    {
-      response.writeHead(200, { 'Content-Type': 'text/html' });
-      response.write(pgResp);
-      response.end();
-    });
-  }
+    }
+  });
 }).listen(443);
-;
