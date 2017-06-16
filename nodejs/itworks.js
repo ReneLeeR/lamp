@@ -5,15 +5,44 @@ var options = {
   key: fs.readFileSync('/var/www/cgi/nodejs/ssl/node.key'),
   cert: fs.readFileSync('/var/www/cgi/nodejs/ssl/node.crt')
 };
-fs.readFile('/var/www/html/index.html', function (err, html) {
-    http.createServer(function(request, response) {  
-        response.writeHeader(200, {"Content-Type": "text/html"});  
-        response.write(html);  
-        response.end();  
-    }).listen(80);
-    https.createServer(options, function(request, response) {  
-	    response.writeHeader(200, {"Content-Type": "text/html"});  
-	    response.write(html);  
-	    response.end();  
-    }).listen(443);
-});
+http.createServer(function(request, response) {  
+  if(request.url == "/")
+  {
+    fs.readFile("/var/www/html/index.html", function (error, pgResp) 
+    {
+      response.writeHead(200, { 'Content-Type': 'text/html' });
+      response.write(pgResp);
+      response.end();
+    });
+  } 
+  else
+  {
+    fs.readFile("/var/www/html/404/index.html", function (error, pgResp) 
+    {
+      response.writeHead(200, { 'Content-Type': 'text/html' });
+      response.write(pgResp);
+      response.end();
+    });
+  }
+}).listen(80);
+https.createServer(options, function(request, response) {
+  if(request.url == "/")
+  {
+    fs.readFile("/var/www/html/index.html", function (error, pgResp) 
+    {
+      response.writeHead(200, { 'Content-Type': 'text/html' });
+      response.write(pgResp);
+      response.end();
+    });
+  } 
+  else
+  {
+    fs.readFile("/var/www/html/404/index.html", function (error, pgResp) 
+    {
+      response.writeHead(200, { 'Content-Type': 'text/html' });
+      response.write(pgResp);
+      response.end();
+    });
+  }
+}).listen(443);
+;
