@@ -11,7 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-ye
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install nodejs
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install npm
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install mysql-server
-RUN mkdir -p /var/www/html/
+RUN mkdir -p /var/www/html/404
 RUN mkdir -p /var/www/cgi/nodejs/ssl
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /var/www/cgi/nodejs/ssl/node.key -out /var/www/cgi/nodejs/ssl/node.crt -subj "/C=MX/ST=Aguascalientes/L=Aguascalientes/O=Instituto Tecnologico De Aguascalientes/OU=Centro De Computo/CN=ssl.ita.mx"
 RUN echo 'root:Uuddlrlrbas-190598'|chpasswd
@@ -28,4 +28,4 @@ RUN npm install forever --global
 COPY sshd_config /etc/ssh/
 COPY itworks.js /var/www/cgi/nodejs
 COPY index.html /var/www/html
-COPY 404 /var/www/html
+COPY 404 /var/www/html/404
