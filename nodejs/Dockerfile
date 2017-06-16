@@ -28,4 +28,4 @@ RUN npm install forever --global
 COPY sshd_config /etc/ssh/
 COPY itworks.js /var/www/cgi/nodejs
 COPY index.html /var/www/html
-COPY 404/ /var/www/html
+COPY 404 /var/www/html
