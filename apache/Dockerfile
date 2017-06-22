@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:latest
 MAINTAINER rene.lee@mail.ita.mx
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing update
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing upgrade
