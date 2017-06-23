@@ -47,10 +47,10 @@ RUN chown web:web -R /var/www/html/
 RUN chmod 755 -R /var/www/html/
 COPY sshd_config /etc/ssh/
 COPY default /etc/nginx/sites-available/        
-COPY php.ini /etc/php7.0/cli/
-COPY php.ini /etc/php7.0/apache2/        
-COPY php.ini /etc/php7.0/cgi/                       
-COPY php.ini /etc/php7.0/embed/          
-COPY php.ini /etc/php7.0/fpm/            
-COPY php.ini /etc/php7.0/phpdbg/
+COPY php.ini /etc/php/7.0/cli/
+COPY php.ini /etc/php/7.0/apache2/        
+COPY php.ini /etc/php/7.0/cgi/                       
+COPY php.ini /etc/php/7.0/embed/          
+COPY php.ini /etc/php/7.0/fpm/            
+COPY php.ini /etc/php/7.0/phpdbg/
 COPY index.php /var/www/html
