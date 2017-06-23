@@ -22,7 +22,6 @@ RUN useradd -d /var/www/html -g web web
 RUN echo 'web:password'|chpasswd
 RUN chown web:web -R /var/www/html/
 RUN chmod 755 -R /var/www/html/
-RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN npm install npm --global
 RUN npm install mysql --global
 RUN npm install express --global
