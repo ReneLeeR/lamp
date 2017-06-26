@@ -10,8 +10,6 @@ app.get('/', function(req,res) {
     res.send(fs.readFileSync('/var/www/html/index.html', 'utf8'));
 });
 
-
-
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
