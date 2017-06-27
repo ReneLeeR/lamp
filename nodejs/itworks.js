@@ -10,11 +10,11 @@ app.use(express.static("/var/www/html"));
 app.use(favicon("/var/www/html/img/favicon.ico")); 
 
 app.get('/', function(req,res) {
-    res.send(fs.readFileSync('index.html', 'utf8'));
+    res.send(fs.readFileSync('/var/www/html/index.html', 'utf8'));
 });
 
 app.get('*', function(req, res){
-  res.send('what???', 404);
+  res.send(fs.readFileSync('/var/www/html/404/index.html', 'utf8'));
 });
 
 var httpServer = http.createServer(app);
