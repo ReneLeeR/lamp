@@ -6,8 +6,13 @@ var express = require('express');
 var app = express();
 
 app.use(express.static("/var/www/html"));
+
 app.get('/', function(req,res) {
     res.send(fs.readFileSync('/var/www/html/index.html', 'utf8'));
+});
+
+app.get('*', function(req, res){
+  res.send('wut???', 404);
 });
 
 var httpServer = http.createServer(app);
