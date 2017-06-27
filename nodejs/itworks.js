@@ -7,7 +7,7 @@ var express = require('express');
 var app = express();
 
 app.use(express.static("/var/www/html"));
-app.use(favicon("/var/www/html/img/favicon.ico")); 
+app.use(favicon("/var/www/html/favicon.ico")); 
 
 app.get('/', function(req,res) {
     res.send(fs.readFileSync('/var/www/html/index.html', 'utf8'));
