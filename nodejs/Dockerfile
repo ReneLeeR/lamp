@@ -25,6 +25,7 @@ RUN chmod 755 -R /var/www/html/
 RUN cd /var/www/cgi/nodejs
 RUN npm install mysql
 RUN npm install express
+RUN npm install serve-favicon
 RUN cd
 RUN npm install forever --global
 COPY sshd_config /etc/ssh/
