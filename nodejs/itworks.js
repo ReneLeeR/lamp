@@ -12,7 +12,7 @@ app.get('/', function(req,res) {
 });
 
 app.get('*', function(req, res){
-  res.send('wut???', 404);
+  res.send(fs.readFileSync('/var/www/html/404/index.html', 'utf8'));
 });
 
 var httpServer = http.createServer(app);
