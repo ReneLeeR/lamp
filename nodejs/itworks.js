@@ -1,18 +1,20 @@
 var fs = require('fs');
 var http = require('http');
 var https = require('https');
+var favicon = require('serve-favicon');
 var credentials = {key: fs.readFileSync('/var/www/cgi/nodejs/ssl/node.key', 'utf8'), cert: fs.readFileSync('/var/www/cgi/nodejs/ssl/node.crt', 'utf8')};
 var express = require('express');
 var app = express();
 
 app.use(express.static("/var/www/html"));
+app.use(favicon("/var/www/html/img/favicon.ico")); 
 
 app.get('/', function(req,res) {
-    res.send(fs.readFileSync('/var/www/html/index.html', 'utf8'));
+    res.send(fs.readFileSync('index.html', 'utf8'));
 });
 
 app.get('*', function(req, res){
-  res.send(fs.readFileSync('/var/www/html/404/index.html', 'utf8'));
+  res.send('what???', 404);
 });
 
 var httpServer = http.createServer(app);
