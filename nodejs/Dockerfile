@@ -26,6 +26,7 @@ RUN cd /var/www/cgi/nodejs
 RUN npm install mysql
 RUN npm install express
 RUN npm install serve-favicon
+RUN npm install nodeadmin
 RUN cd
 RUN npm install forever --global
 COPY sshd_config /etc/ssh/
