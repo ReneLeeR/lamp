@@ -27,6 +27,14 @@ RUN npm install mysql
 RUN npm install express
 RUN npm install serve-favicon
 RUN npm install nodeadmin
+RUN npm install bluebird
+RUN npm install body-parser
+RUN npm install jsonwebtoken
+RUN npm install morgan
+RUN npm install path
+RUN npm install promise-mysql
+RUN npm install randomstring
+RUN npm install socket.io
 RUN cd
 RUN npm install forever --global
 COPY sshd_config /etc/ssh/
