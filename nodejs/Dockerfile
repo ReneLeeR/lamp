@@ -29,7 +29,7 @@ RUN npm install serve-favicon
 RUN npm install nodeadmin
 RUN npm install bluebird
 RUN npm install body-parser
-RUN npm install jsonwebtoken
+RUN npm install json-web-token
 RUN npm install morgan
 RUN npm install path
 RUN npm install promise-mysql
