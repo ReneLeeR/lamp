@@ -28,8 +28,6 @@ RUN npm install serve-favicon
 RUN npm install mysql
 RUN npm install nodeadmin
 RUN npm install forever --global
-RUN npm install npm-install-all --global
-RUN npm-install-all
 COPY sshd_config /etc/ssh/
 COPY itworks.js /var/www/cgi/nodejs
 COPY index.html /var/www/html
