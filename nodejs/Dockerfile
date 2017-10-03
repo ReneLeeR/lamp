@@ -34,13 +34,6 @@ RUN npm install path
 RUN npm install promise-mysql
 RUN npm install randomstring
 RUN npm install socket.io
-RUN npm install setprototypeof
-RUN npm install ms
-RUN npm install inherits
-RUN npm install accepts
-RUN npm install isarray
-RUN npm install component-emitter
-RUN npm install ws
 RUN npm install nodeadmin
 RUN npm install forever --global
 COPY sshd_config /etc/ssh/
