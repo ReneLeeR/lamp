@@ -23,11 +23,10 @@ RUN echo 'web:password'|chpasswd
 RUN chown web:web -R /var/www/html/
 RUN chmod 755 -R /var/www/html/
 RUN cd /var/www/cgi/nodejs
-RUN npm install npm-install-all -g
-RUN npm-install-all express
-RUN npm-install-all serve-favicon
-RUN npm-install-all mysql
-RUN npm-install-all nodeadmin
+RUN npm install express --save
+RUN npm install serve-favicon --save
+RUN npm install mysql --save
+RUN npm install nodeadmin --save
 RUN cd
 RUN npm install forever --global
 COPY sshd_config /etc/ssh/
