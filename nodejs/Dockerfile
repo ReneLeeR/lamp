@@ -23,7 +23,9 @@ RUN echo 'web:password'|chpasswd
 RUN chown web:web -R /var/www/html/
 RUN chmod 755 -R /var/www/html/
 RUN cd /var/www/cgi/nodejs
-ADD package.json /var/www/html/cgi/nodejs
+ADD package.json /tmp/package.json
+RUN cd /tmp && npm install
+RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
 RUN npm install express
 RUN npm install serve-favicon
 RUN npm install mysql
