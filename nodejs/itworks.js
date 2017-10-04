@@ -2,14 +2,12 @@ var fs = require('fs');
 var http = require('http');
 var https = require('https');
 var favicon = require('serve-favicon');
-var nodeadmin = require('nodeadmin');
 var credentials = {key: fs.readFileSync('/var/www/cgi/nodejs/ssl/node.key', 'utf8'), cert: fs.readFileSync('/var/www/cgi/nodejs/ssl/node.crt', 'utf8')};
 var express = require('express');
 var app = express();
 
 app.use(express.static("/var/www/html"));
 app.use(favicon("/var/www/html/favicon.ico")); 
-app.use(nodeadmin(app));
 
 app.get('/', function(req,res) {
     res.send(fs.readFileSync('/var/www/html/index.html', 'utf8'));
