@@ -5,12 +5,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-miss
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing dist-upgrade
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install openssh-server
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install openssl
-RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install python3
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install build-essential
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install libxml2-dev
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install curl
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install gnupg2
-RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install git
 RUN curl -Ok https://deb.nodesource.com/setup_8.x
 RUN sh setup_8.x
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install nodejs
@@ -24,10 +22,7 @@ RUN useradd -d /var/www/html -g web web
 RUN echo 'web:password'|chpasswd
 RUN chown web:web -R /var/www/html/
 RUN chmod 755 -R /var/www/html/
-RUN cd /var/www/cgi/nodejs
-ADD package.json /tmp/package.json
-RUN cd /tmp && npm install
-RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
+WORKDIR /var/www/cgi/nodejs
 RUN npm install express
 RUN npm install serve-favicon
 RUN npm install mysql
