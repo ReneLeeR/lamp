@@ -14,12 +14,18 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-ye
 RUN curl -Ok https://deb.nodesource.com/setup_8.x
 RUN sh setup_8.x
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --force-yes --fix-missing install nodejs
+RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing update
+RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing upgrade
+RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing dist-upgrade
 RUN mkdir -p /var/www
-RUN npm install -g pencilblue-cli
 RUN echo 'root:Uuddlrlrbas-190598'|chpasswd
 RUN addgroup web
 RUN useradd -d /var/www -g web web
 RUN echo 'web:password'|chpasswd
 RUN chown web:web -R /var/www
 RUN chmod 755 -R /var/www
+WORKDIR /var/www
+RUN npm install -g yo
+RUN npm install -g generator-keystone
+RUN yo keystone
 COPY sshd_config /etc/ssh/
