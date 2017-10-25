@@ -1,5 +1,6 @@
 FROM debian:latest
 MAINTAINER rene.lee@mail.ita.mx
+USER root
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing update
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing upgrade
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing dist-upgrade
