@@ -27,6 +27,8 @@ RUN chown web:web -R /var/www
 RUN chmod 755 -R /var/www
 WORKDIR /var/www
 RUN npm install -g yo
+RUN chown root:root -R /root/.config/configstore/insight-yo.json
+RUN chmod 777 -R /root/.config/configstore/insight-yo.json
 RUN npm install -g generator-keystone
 RUN yo keystone
 COPY sshd_config /etc/ssh/
