@@ -1,0 +1,6 @@
+deb http://cdn-aws.deb.debian.org/debian stretch main
+deb http://security.debian.org stretch/updates main
+deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+# deb-src [arch=amd64] https://download.docker.com/linux/debian stretch stable
+deb http://cdn-aws.deb.debian.org/debian stretch-updates main
+deb http://repo.mongodb.org/apt/debian  jessie main
