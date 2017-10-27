@@ -30,6 +30,7 @@ WORKDIR /var/www/cgi/nodejs
 RUN npm install express
 RUN npm install serve-favicon
 RUN npm install mysql
+RUN npm install nodeadmin
 RUN npm install forever --global
 COPY sshd_config /etc/ssh/
 COPY itworks.js /var/www/cgi/nodejs
