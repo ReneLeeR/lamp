@@ -29,6 +29,7 @@ RUN chmod 755 -R /var/www/html/
 WORKDIR /var/www/cgi/nodejs
 RUN npm install express
 RUN npm install serve-favicon
+RUN npm install jsonwebtoken
 RUN npm install mysql
 RUN npm install nodeadmin
 RUN npm install forever --global
