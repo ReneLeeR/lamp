@@ -29,7 +29,7 @@ RUN chmod 755 -R /var/www/html/
 WORKDIR /var/www/cgi/nodejs
 RUN npm install express
 RUN npm install serve-favicon
-npm install jsonwebtoken
+RUN npm install jsonwebtoken
 RUN npm install mongodb
 RUN npm install forever --global
 COPY sshd_config /etc/ssh/
