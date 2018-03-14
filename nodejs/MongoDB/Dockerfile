@@ -32,6 +32,9 @@ RUN npm install serve-favicon
 RUN npm install jsonwebtoken
 RUN npm install mongodb
 RUN npm install forever --global
+RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing update
+RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing upgrade
+RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing dist-upgrade
 COPY sshd_config /etc/ssh/
 COPY itworks.js /var/www/cgi/nodejs
 COPY index.html /var/www/html
