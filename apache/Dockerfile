@@ -74,6 +74,9 @@ RUN useradd -d /var/www/html -g web web
 RUN echo 'web:password'|chpasswd
 RUN chown web:web -R /var/www/html/
 RUN chmod 755 -R /var/www/html/
+RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing update
+RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing upgrade
+RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing dist-upgrade
 COPY sshd_config /etc/ssh/
 COPY default-ssl.conf /etc/apache2/sites-available/
 COPY php.ini /etc/php/7.0/cli/
