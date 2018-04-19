@@ -32,7 +32,7 @@ RUN npm install serve-favicon
 RUN npm install jsonwebtoken
 RUN npm install mysql
 RUN npm install nodeadmin
-RUN npm install forever --global
+RUN npm install nodemon --global
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing update
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing upgrade
 RUN DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y --fix-missing dist-upgrade
